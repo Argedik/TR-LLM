@@ -1,0 +1,30 @@
+# Python Virtual Environment
+bin/
+include/
+lib/
+lib64
+share/
+pyvenv.cfg
+
+# Security - Credentials & Secrets
+# Ignore files containing sensitive information like API keys or passwords.
+.env
+.env.*
+secrets.json
+credentials.json
+config.json
+*.pem
+*.key
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# IDE and editor configuration
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+*~
