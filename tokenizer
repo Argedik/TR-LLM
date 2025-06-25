@@ -1,0 +1,25 @@
+import re
+from collections import Counter
+
+# Örnek metin (istersen Türkçe metin de verebilirim)
+text = """
+Python ile dil modeli geliştirmek istiyorum. Python güçlüdür. Dil işleme süreci çok heyecan verici!
+"""
+
+# Tokenizer - basit bir boşluk ve noktalama işaretlerine göre ayırıcı
+def tokenize(text):
+    # Küçük harfe çevir, noktalama işaretlerini sil, boşluklara göre ayır
+    tokens = re.findall(r'\b\w+\b', text.lower())
+    return tokens
+
+# Tokenize et
+tokens = tokenize(text)
+
+# Kelime frekanslarını hesapla
+word_freq = Counter(tokens)
+
+# Sonuçları yazdır
+print("Tokenlar:", tokens)
+print("\nKelime Frekansları:")
+for word, freq in word_freq.items():
+    print(f"{word}: {freq}")
