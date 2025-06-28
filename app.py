@@ -1,17 +1,11 @@
-from flask import Flask, request, render_template
 from transformers import pipeline
 
-app = Flask(__name__)
-ceviri = pipeline("translation", model="Helsinki-NLP/opus-mt-tr-en")
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    sonuc = ""
-    if request.method == "POST":
-        metin = request.form["metin"]
-        ceviri_sonucu = ceviri(metin)
-        sonuc = ceviri_sonucu[0]['translation_text']
-    return render_template("index.html", sonuc=sonuc)
+def main():
+    analiz = pipeline("sentiment-analysis")
+    metin = "Bu ülkeyi çok seviyorum, her şey daha güzel olacak."
+    sonuc = analiz(metin)
+    print("Metin:", metin)
+    print("Duygu:", sonuc[0]['label'], "Güven:", round(sonuc[0]['score'] * 100, 2), "%")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    main()
